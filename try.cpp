@@ -192,22 +192,32 @@
 // }
 
 // map ko smjha rhe hai 
-#include<bits/stdc++.h>
-using namespace std;
-int main(){
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
 
-  int n;
-  cin>>n;
-  vector<int>arr(n);
-  arr = {13,2,3,54,6,7,34};
-   map<int,int>mpp;
-   for(auto it : arr){
-    mpp[it]++;
-   }
-   cout<<mpp[2]<<endl;
-   cout<<mpp[54]<<endl;
+//   int n;
+//   cin>>n;
+//   vector<int>arr(n);
+//   arr = {13,2,3,54,6,7,34};
+//    map<int,int>mpp;
+//    for(auto it : arr){
+//     mpp[it]++;
+//    }
+//    cout<<mpp[2]<<endl;
+//    cout<<mpp[54]<<endl;
    
  
 
-    return 0;
+//     return 0;
+// }
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+  char s = 'a';
+  int n = 12;
+  s  = s + n;
+   cout<<s;
+   return 0
 }
