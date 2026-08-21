@@ -43,61 +43,89 @@ bool searchNode(Node* head, int val){
     }
     return false;
 }
+Node* reversenode(Node* head){
+     Node* temp = head;
+     while(temp != nullptr){
+        temp = temp->next;
+     }
+     head = temp;
+return head;
+}
+
 int main() {
 
-    vector<int> arr = {2, 5, 8, 7};
-    int val = 9;
-    // First node
-    Node* head = new Node(arr[0]);
+//     vector<int> arr = {2, 5, 8, 7};
+//     int val = 9;
+//     // First node
+//     Node* head = new Node(arr[0]);
 
-    // Create remaining nodes
-    Node* prev = head;
+//     // Create remaining nodes
+//     Node* prev = head;
 
-    // for(int i = 1; i < arr.size(); i++) {
+//     // for(int i = 1; i < arr.size(); i++) {
 
-    //     Node* temp = new Node(arr[i]);
+//     //     Node* temp = new Node(arr[i]);
 
-    //     mover->next = temp;
-    //     mover = temp;
-    // }
-   for(int i=1;i<arr.size();i++){
-      Node* temp   = new Node(arr[i],nullptr, prev);
-      prev->next = temp;
-      prev= temp;
-   }
-   Node* temp  = head;
-   while(temp != nullptr){
-     cout<<temp->data<<" ";
-     temp = temp->next ;
-   }
-//    cout<<searchNode(head,val);
+//     //     mover->next = temp;
+//     //     mover = temp;
+//     // }
+//    for(int i=1;i<arr.size();i++){
+//       Node* temp   = new Node(arr[i],nullptr, prev);
+//       prev->next = temp;
+//       prev= temp;
+//    }
+// //  insert the element in head ;
+// //   int n;
+// //   cin>>n;
+// //   Node* newnode = new Node(n,nullptr,nullptr);
+// //     head -> prev = newnode;
+// //     newnode ->next = head;
+// //     head = newnode;
+      
+// // delete element 
 
-    //  count the no. of node 
-    // int cnt =0;
-    // Node* temp = head;
-    // while(temp != nullptr){
-    //    cnt++;
-    //    temp= temp->next;
-    // }
-    // cout<<cnt;
+//     // Node* temp = head;
+//     // while(temp->next != nullptr){
+//     //     temp->prev->next = NULL;
+//     //     delete temp;
+//     // }
+
+//     // reverse the number
+//    Node* newhead1 =  reversenode(head);
+
+//    Node* temp  = newhead1;
+//    while(temp != nullptr){
+//      cout<<temp->data<<" ";
+//      temp = temp->prev ;
+//    }
+// //    cout<<searchNode(head,val);
+
+//     //  count the no. of node 
+//     // int cnt =0;
+//     // Node* temp = head;
+//     // while(temp != nullptr){
+//     //    cnt++;
+//     //    temp= temp->next;
+//     // }
+//     // cout<<cnt;
 
 
-    // Insert at beginning
-    // int n;
-    // cin >> n;
+//     // Insert at beginning
+//     // int n;
+//     // cin >> n;
 
-    // Node* temp = new Node(n);
+//     // Node* temp = new Node(n);
 
-    // temp->next = head;
-    // head = temp;
+//     // temp->next = head;
+//     // head = temp;
 
-    // // Traverse
-    // Node* rem = head;
+//     // // Traverse
+//     // Node* rem = head;
 
-    // while(rem != nullptr) {
-    //     cout << rem->data << " ";
-    //     rem = rem->next;
-    // }
+//     // while(rem != nullptr) {
+//     //     cout << rem->data << " ";
+//     //     rem = rem->next;
+//     // }
 
     return 0;
 }
