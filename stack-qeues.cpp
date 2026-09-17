@@ -1,294 +1,359 @@
 // #include <bits/stdc++.h>
 // using namespace std;
 
-// class ArrayStack {
-// private:
-//     // Array to hold elements
-//     int* stackArray;
-//     // Maximum capacity
-//     int capacity; 
-//      // Index of top element  
-//     int topIndex;   
-
+// class Stack {
 // public:
-//     // Constructor
-//     ArrayStack(int size = 1000) {
-//         capacity = size;
-//         stackArray = new int[capacity];
-//         // Initialize stack as empty
-//         topIndex = -1; 
-//     }
+//     int arr[100];
+//     int top = -1;
 
-//     // Destructor
-//     ~ArrayStack() {
-//         delete[] stackArray;
-//     }
-
-//     // Pushes element x 
 //     void push(int x) {
-//         if (topIndex >= capacity - 1) {
-//             cout << "Stack overflow" << endl;
+//         top++;
+//         arr[top] = x;
+//     }
+
+//     void pop() {
+//         if (top == -1) {
+//             cout << "The stack was empty" << endl;
 //             return;
 //         }
-//         stackArray[++topIndex] = x;
+
+//         cout << arr[top] << endl;
+//         top--;
 //     }
 
-//     // Removes and returns top element
-//     int pop() {
-//         if (isEmpty()) {
-//             cout << "Stack is empty" << endl;
-//             // Return invalid value
-//             return -1; 
+//     void peek() {
+//         if (top == -1) {
+//             cout << "The stack was empty" << endl;
+//             return;
 //         }
-//         return stackArray[topIndex--];
+
+//         cout << arr[top] << endl;
 //     }
 
-//     // Returns top element
-//     int top() {
-//         if (isEmpty()) {
-//             cout << "Stack is empty" << endl;
-//             return -1; 
-//         }
-//         return stackArray[topIndex];
-//     }
-
-//    /* Returns true if the 
-//    stack is empty, false otherwise*/
-//     bool isEmpty() {
-//         return topIndex == -1;
+//     bool isempty() {
+//         return top == -1;
 //     }
 // };
 
-// // Main Function
 // int main() {
-//     ArrayStack stack;
-//     vector<string> commands = {"ArrayStack", "push", "push", "top", "pop", "isEmpty"};
-//     vector<vector<int>> inputs = {{}, {5}, {10}, {}, {}, {}};
 
-//     for (size_t i = 0; i < commands.size(); ++i) {
-//         if (commands[i] == "push") {
-//             stack.push(inputs[i][0]);
-//             cout << "null ";
-//         } else if (commands[i] == "pop") {
-//             cout << stack.pop() << " ";
-//         } else if (commands[i] == "top") {
-//             cout << stack.top() << " ";
-//         } else if (commands[i] == "isEmpty") {
-//             cout << (stack.isEmpty() ? "true" : "false") << " ";
-//         } else if (commands[i] == "ArrayStack") {
-//             cout << "null ";
-//         }
-//     }
+//     Stack st;
+
+//     st.push(10);
+//     st.push(5);
+//     st.push(6);
+
+//     st.pop();             // 6
+//     st.peek();            // 5
+//     cout << st.isempty(); // 0
 
 //     return 0;
 // }
 
-
-//  {this is queue propty }
-
-// #include <bits/stdc++.h>
+// #include<bits/stdc++.h>
 // using namespace std;
-
-// // Class implementing Queue using Arrays
-// class ArrayQueue {
-//     // Array to store queue elements
-//     int* arr;
-//     // Indices for start and end of the queue
-//     int start, end;
-//     // Current size and maximum size of the queue
-//     int currSize, maxSize;
-
-// public:
-//     // Constructor
-//     ArrayQueue() {
-//         arr = new int[10];
-//         start = -1;
-//         end = -1;
-//         currSize = 0;
-//         maxSize = 10;
+// class ArrayQueue{
+//     public:
+//     int arr[100];
+//     int start = 0;
+//     int end = -1;
+//     void push(int x){
+//         end++;
+//         arr[end]=x;
 //     }
-
-//     // Method to push an element into the queue
-//     void push(int x) {
-//         // Check if the queue is full
-//         if (currSize == maxSize) {
-//             cout << "Queue is full\nExiting..." << endl;
-//             exit(1);
+//     void pop(){
+//         if( end < start){
+//             cout<<"queue is empty "<<endl;
+//            return;
 //         }
-        
-//         // If the queue is empty, initialize start and end
-//         if (end == -1) {
-//             start = 0;
-//             end = 0;
-//         } 
-//         else {
-//             // Circular increment of end
-//             end = (end + 1) % maxSize;
-//         }
-            
-//         arr[end] = x;
-//         currSize++;
+//        cout<< arr[start]<<endl;
+//         start++;
 //     }
-
-//     // Method to pop an element from the queue
-//     int pop() {
-//         // Check if the queue is empty
-//         if (start == -1) {
-//             cout << "Queue Empty\nExiting..." << endl;
-//             exit(1);
+//     void peek(){
+//         if(end<start){
+//             cout<<"queue is empty"<<endl;
+//             return;
 //         }
-//         int popped = arr[start];
-        
-//         // If the queue has only one element, reset start and end
-//         if (currSize == 1) {
-//             start = -1;
-//             end = -1;
-//         }
-//         else {
-//             // Circular increment of start
-//             start = (start + 1) % maxSize;
-//         }
-        
-//         currSize--;
-//         return popped;
+//        cout<<arr[start]<<endl;
 //     }
-
-//     // Method to get the front element of the queue
-//     int peek() {
-//         // Check if the queue is empty
-//         if (start == -1) {
-//             cout << "Queue is Empty" << endl;
-//             exit(1);
-//         }
-//         return arr[start];
-//     }
-
-//     // Method to determine whether the queue is empty
-//     bool isEmpty() {
-//         return (currSize == 0);
+//     bool isempty(){
+//        return end < start;
 //     }
 // };
+// int main(){
+//     ArrayQueue q;
 
-// int main() {
-//     ArrayQueue queue;
-//     vector<string> commands = {"ArrayQueue", "push", "push", 
-//                                "peek", "pop", "isEmpty"};
-//     vector<vector<int>> inputs = {{}, {5}, {10}, {}, {}, {}};
+//     q.push(10);
+//     q.push(5);
+//     q.push(6);
 
-//     for (int i = 0; i < commands.size(); ++i) {
-//         if (commands[i] == "push") {
-//             queue.push(inputs[i][0]);
-//             cout << "null ";
-//         } else if (commands[i] == "pop") {
-//             cout << queue.pop() << " ";
-//         } else if (commands[i] == "peek") {
-//             cout << queue.peek() << " ";
-//         } else if (commands[i] == "isEmpty") {
-//             cout << (queue.isEmpty() ? "true" : "false") << " ";
-//         } else if (commands[i] == "ArrayQueue") {
-//             cout << "null ";
-//         }
-//     }
+//     q.pop();
+//     q.peek();
+
+//     cout<<q.isempty();
 
 //     return 0;
+
 // }
-
-// {the stack using linkedlist }
-
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-// Node structure
-struct Node {
-    int val;
-    Node *next;
-    Node(int d) {
-        val = d;
-        next = NULL;
-    }
-};
+int prec(char c) {
+    if(c == '^') return 3;
+    if(c == '*' || c == '/') return 2;
+    if(c == '+' || c == '-') return 1;
+    return -1;
+}
 
-// Structure to represent stack
-class LinkedListStack {
-private:
-    Node *head; // Top of Stack
-    int size; // Size
+ void infixtopostfix(string &s) {
+     stack<char> st;
+     string res;
 
-public:
-    // Constructor
-    LinkedListStack() {
-        head = NULL;
-        size = 0;
-    }
+     for(auto ch : s) {
+         char c = ch;
 
-    // Method to push an element onto the stack
-    void push(int x) {
-        // Creating a node 
-        Node *element = new Node(x);
-        
-        element->next = head; // Updating the pointers
-        head = element; // Updating the top
-        
-        // Increment size by 1
-        size++;
-    }
+        //  Operand
+         if((c >= 'a' && c <= 'z') ||
+            (c >= 'A' && c <= 'Z') ||
+            (c >= '0' && c <= '9')) {
+             res += c;
+         }
 
-    // Method to pop an element from the stack
-    int pop() {
-        // If the stack is empty
-        if (head == NULL) {
-            return -1; // Pop operation cannot be performed
+         // Opening bracket
+         else if(c == '(') {
+             st.push(c);
+         }
+
+         // Closing bracket
+         else if(c == ')') {
+             while(!st.empty() && st.top() != '(') {
+                 res += st.top();
+                 st.pop();
+             }
+
+            if(!st.empty())
+                 st.pop();
+         }
+
+         // Operator
+         else {
+             while(!st.empty() && prec(c) <= prec(st.top())) {
+                 res += st.top();
+                 st.pop();
+             }
+
+             st.push(c);
+         }
+     }
+
+     // Empty the remaining stack
+     while(!st.empty()) {
+         res += st.top();
+         st.pop();
+     }
+
+     cout << res << endl;
+ }
+void infixtoprefix(string &s){
+    stack<char>st;
+    reverse(s.begin(), s.end()); 
+    for(int i = 0; i < s.size(); i++) {
+        if(s[i] == '(')
+            s[i] = ')';
+        else if(s[i] == ')')
+            s[i] = '(';
+    }   
+    string res;
+    for(auto ch: s){
+        char c = ch;
+        if((c >= 'a' && c <= 'z') ||
+           (c >= 'A' && c <= 'Z') ||
+           (c >= '0' && c <= '9')) {
+            res += c;
         }
-        
-        int value = head->val; // Get the top value
-        Node *temp = head; // Store the top temporarily
-        head = head->next; // Update top to next node
-        delete temp; // Delete old top node
-        size--; // Decrement size
-        
-        return value; // Return data
-    }
-    
-    // Method to get the top element of the stack
-    int top() {
-        // If the stack is empty
-        if (head == NULL) {
-            return -1; // Top element cannot be accessed
+        else if(c == '('){
+            st.push(c);
         }
-        
-        return head->val; // Return the top
+        else if (c == ')'){
+            while(!st.empty() && st.top()!= '('){
+                res+=st.top();
+                st.pop();
+            }
+          if(!st.empty())
+            st.pop();
+        }
+        else{
+            while(!st.empty() && prec(c) <= prec(st.top())){
+                res+=st.top();
+                st.pop();
+            } 
+            st.push(c);
+        }
+
     }
-
-    // Method to check if the stack is empty
-    bool isEmpty() {
-        return (size == 0);
+    while(!st.empty()){
+        res+=st.top();
+        st.pop();
     }
-};
+    reverse(res.begin(),res.end());
+    cout<<res<<endl;
+}
 
-int main() {
-    // Creating a stack
-    LinkedListStack st;
+void postfixtoinfix(string &s) {
+    stack<string> st;
 
-    // List of commands
-    vector<string> commands = {"LinkedListStack", "push", "push", 
-                               "pop", "top", "isEmpty"};
-    // List of inputs
-    vector<vector<int>> inputs = {{}, {3}, {7}, {}, {}, {}};
+    for(auto ch : s) {
+        char c = ch;
 
-    for (int i = 0; i < commands.size(); ++i) {
-        if (commands[i] == "push") {
-            st.push(inputs[i][0]);
-            cout << "null ";
-        } else if (commands[i] == "pop") {
-            cout << st.pop() << " ";
-        } else if (commands[i] == "top") {
-            cout << st.top() << " ";
-        } else if (commands[i] == "isEmpty") {
-            cout << (st.isEmpty() ? "true" : "false") << " ";
-        } else if (commands[i] == "LinkedListStack") {
-            cout << "null ";
+        // Operand
+        if((c >= 'a' && c <= 'z') ||
+           (c >= 'A' && c <= 'Z') ||
+           (c >= '0' && c <= '9')) {
+
+            st.push(string(1, c));
+        }
+
+        // Operator
+        else {
+            string t1 = st.top();
+            st.pop();
+
+            string t2 = st.top();
+            st.pop();
+
+            string temp = "(" + t2 + c + t1 + ")";
+
+            st.push(temp);
         }
     }
+
+    cout << st.top() << endl;
+}
+void prefixtoinfix(string &s) {
+    stack<string> st;
+
+    reverse(s.begin(), s.end());
+
+    for(auto ch : s) {
+
+        // Operand
+        if((ch >= 'a' && ch <= 'z') ||
+           (ch >= 'A' && ch <= 'Z') ||
+           (ch >= '0' && ch <= '9')) {
+
+            st.push(string(1, ch));
+        }
+
+        // Operator
+        else {
+            string t1 = st.top();
+            st.pop();
+
+            string t2 = st.top();
+            st.pop();
+
+            string temp = "(" + t1 + ch + t2 + ")";
+
+            st.push(temp);
+        }
+    }
+
+    cout << st.top() << endl;
+}
+void prefixtopostfix(string &s){
+    reverse(s.begin(),s.end());
+    stack<string> st;
+    string res;
+    for(auto ch : s){
+       if((ch >= 'a' && ch <= 'z') ||
+           (ch >= 'A' && ch <= 'Z') ||
+           (ch >= '0' && ch <= '9')) {
+
+            st.push(string(1, ch));
+        }
+        else{
+            string t1 = st.top();
+            st.pop();
+            string t2 = st.top();
+            st.pop();
+            st.push(t1 + t2 + ch);
+        }
+    }
+    cout<<st.top()<<endl;
+}
+void posttoprefix(string &s){
+    string res;
+    stack<string>st;
+    for(auto ch : s){
+        if((ch >= 'a' && ch <= 'z') ||
+           (ch >= 'A' && ch <= 'Z') ||
+           (ch >= '0' && ch <= '9')) {
+
+            st.push(string(1, ch));
+        } 
+        else{
+            string t1 = st.top();
+            st.pop();
+            string t2 = st.top();
+            st.pop();
+             st.push(string(1, ch) + t2 + t1);
+
+        }
+    }
+    cout<<st.top()<<endl;
+}
+void nextsmallestno(vector<int> &nums){
+    stack<int>st;
+    int n = nums.size();
+    vector<int>nse(n,-1);
+    for(int i = nums.size()-1;i>=0;i--){
+        while(!st.empty() && st.top()>=nums[i]){
+            st.pop();
+        }
+        if(!st.empty()){
+            nse[i] = st.top();
+        }
+        st.push(nums[i]);
+    }
+    for(auto ch : nse){
+        cout<<ch<<" ";
+    }
+}
+void nextgreaterno(vector<int> &nums){
+    stack<int>st;
+    int n = nums.size();
+    vector<int>nge(n,-1);
+    for(int i = n-1;i>=0;i--){
+        while(!st.empty() && st.top()<=nums[i]){
+            st.pop();
+        }
+        if(!st.empty()) {
+            nge[i] = st.top();
+        }
+
+        st.push(nums[i]);
+    }
+     for(int x : nge) {
+        cout << x << " ";
+    }
+}
+int main(){
+    // string s;
+    // cin >> s;
+    int n;
+    cin>>n;
+    vector<int>nums(n);
+    for(int i=0;i<n;i++){
+        cin>>nums[i];
+    }
+    // infixtopostfix(s);
+    // infixtoprefix(s);
+    // postfixtoinfix(s);
+    // prefixtoinfix(s);
+    // prefixtopostfix(s);
+    // posttoprefix(s);
+    // nextsmallestno(nums);
+    nextgreaterno(nums);
 
     return 0;
 }

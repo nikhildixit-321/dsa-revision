@@ -1,1 +1,2 @@
-null null null 7 3 false 
+Number of Jobs: 2
+Maximum Profit: 150
